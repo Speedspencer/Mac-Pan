@@ -39,9 +39,9 @@ public class NetworkUI : MonoBehaviour
 
     private bool NetworkCheck()
     {
-        // if (transport.ConnectionData.Address == "127.0.0.1")
-        //     if (!CheckIP())
-        //         return true;
+        if (transport.ConnectionData.Address == "127.0.0.1")
+            if (!CheckIP())
+                return true;
         if (NetworkManager.Singleton.IsListening) return true;
         return false;
     }
