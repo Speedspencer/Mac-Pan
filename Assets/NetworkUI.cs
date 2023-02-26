@@ -20,22 +20,22 @@ public class NetworkUI : MonoBehaviour
     {
         serverButton.onClick.AddListener(delegate
         {
-            if (transport.ConnectionData.Address == "127.0.0.1") return;
-            if (!CheckIP()) return;
+            if (transport.ConnectionData.Address == "127.0.0.1")
+                if (!CheckIP()) return;
             NetworkManager.Singleton.StartServer();
             NetworkManager.Singleton.SceneManager.LoadScene("Game", LoadSceneMode.Single);
         });
         hostButton.onClick.AddListener(delegate
         {
-            if (transport.ConnectionData.Address == "127.0.0.1") return;
-            if (!CheckIP()) return;
+            if (transport.ConnectionData.Address == "127.0.0.1")
+                if (!CheckIP()) return;
             NetworkManager.Singleton.StartHost();
             NetworkManager.Singleton.SceneManager.LoadScene("Game", LoadSceneMode.Single);
         });
         clientButton.onClick.AddListener(delegate
         {
-            if (transport.ConnectionData.Address == "127.0.0.1") return;
-            if (!CheckIP()) return;
+            if (transport.ConnectionData.Address == "127.0.0.1")
+                if (!CheckIP()) return;
             NetworkManager.Singleton.StartClient();
         });
     }
