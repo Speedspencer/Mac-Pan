@@ -15,10 +15,13 @@ public class Movement : NetworkBehaviour
     public Vector2 Direction { get; private set; }
     public Vector2 NextDirection { get; private set; }
     public Vector3 StartingPosition { get; private set; }
+    
+    private NetworkObject networkObject;
 
     private void Awake()
     {
         Rb = GetComponent<Rigidbody2D>();
+        networkObject = GetComponent<NetworkObject>();
         StartingPosition = transform.position;
     }
 
@@ -39,23 +42,39 @@ public class Movement : NetworkBehaviour
 
     private void Update()
     {
-        if(!IsOwner) return;
         if(NextDirection != Vector2.zero)
             SetDirection(NextDirection);
     }
 
     private void FixedUpdate()
     {
-        if(!IsOwner) return;
-        Vector2 position = Rb.position;
         Vector2 translation = Direction * (speed * speedMultiplier * Time.fixedDeltaTime);
-        Rb.MovePosition(position + translation);
+
+        if (IsLocalPlayer)
+        {
+            MoveServerRpc(translation);
+        } 
+        else if (IsServer)
+        {
+            Rb.MovePosition(Rb.position + translation);
+        }
+       
     }
     
+    [ServerRpc]
+    public void MoveServerRpc(Vector2 translation)
+    {
+        Rb.MovePosition(Rb.position + translation);
+    }
+    
+    
+    
+
     public void SetDirection(Vector2 direction, bool forced = false)
     {
         if (!Occupied(direction) || forced)
         {
+            Debug.Log("InputSent" + OwnerClientId);
             Direction = direction;
             NextDirection = Vector2.zero;
         }

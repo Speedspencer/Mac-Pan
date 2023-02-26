@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 1014076806763056504}
   - component: {fileID: 1014076806763056505}
   - component: {fileID: 7793482530454451375}
-  - component: {fileID: -4663595576044912580}
-  - component: {fileID: -322446523710301167}
+  - component: {fileID: 7762173264063384293}
+  - component: {fileID: 7875488651221099354}
   m_Layer: 6
   m_Name: PacMan
   m_TagString: Untagged
@@ -174,7 +174,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &-4663595576044912580
+--- !u!114 &7762173264063384293
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1014076806763056503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncPositionX: 1
@@ -200,7 +200,7 @@ MonoBehaviour:
   ScaleThreshold: 0.01
   InLocalSpace: 0
   Interpolate: 1
---- !u!114 &-322446523710301167
+--- !u!114 &7875488651221099354
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

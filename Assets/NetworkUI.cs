@@ -14,30 +14,36 @@ public class NetworkUI : MonoBehaviour
     
     [SerializeField] private TMP_InputField ipInput;
     [SerializeField] private UnityTransport transport;
-    
 
-    private void Awake()
+
+    public void Awake()
     {
         serverButton.onClick.AddListener(delegate
         {
-            if (transport.ConnectionData.Address == "127.0.0.1")
-                if (!CheckIP()) return;
+            if (NetworkCheck()) return;
             NetworkManager.Singleton.StartServer();
             NetworkManager.Singleton.SceneManager.LoadScene("Game", LoadSceneMode.Single);
         });
         hostButton.onClick.AddListener(delegate
         {
-            if (transport.ConnectionData.Address == "127.0.0.1")
-                if (!CheckIP()) return;
+            if (NetworkCheck()) return;
             NetworkManager.Singleton.StartHost();
             NetworkManager.Singleton.SceneManager.LoadScene("Game", LoadSceneMode.Single);
         });
         clientButton.onClick.AddListener(delegate
         {
-            if (transport.ConnectionData.Address == "127.0.0.1")
-                if (!CheckIP()) return;
+            if (NetworkCheck()) return;
             NetworkManager.Singleton.StartClient();
         });
+    }
+
+    private bool NetworkCheck()
+    {
+        // if (transport.ConnectionData.Address == "127.0.0.1")
+        //     if (!CheckIP())
+        //         return true;
+        if (NetworkManager.Singleton.IsListening) return true;
+        return false;
     }
 
     private bool CheckIP()
@@ -47,12 +53,9 @@ public class NetworkUI : MonoBehaviour
         {
             transport.ConnectionData.Address = ipInput.text;
             return true;
-        } 
-        else
-        {
-            Debug.LogError("Invalid IP");
-            return false;
         }
+        Debug.LogError("Invalid IP");
+        return false;
     }
     
     
