@@ -21,8 +21,8 @@ public class Movement : NetworkBehaviour
         Rb = GetComponent<Rigidbody2D>();
         StartingPosition = transform.position;
     }
-    
-    private void Start()
+
+    public override void OnNetworkSpawn()
     {
         ResetState();
     }
