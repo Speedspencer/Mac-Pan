@@ -20,8 +20,11 @@ public class Player : NetworkBehaviour
         float angle = Mathf.Atan2(Movement.Direction.y, Movement.Direction.x) * Mathf.Rad2Deg;
         if (IsLocalPlayer)
         {
-            if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            {
                 InputServerRpc(angle, Vector2.up);
+                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            }
             else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
                 InputServerRpc(angle, Vector2.down);
             else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
@@ -53,4 +56,5 @@ public class Player : NetworkBehaviour
         Movement.SetDirection(direction);
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
+    
 }

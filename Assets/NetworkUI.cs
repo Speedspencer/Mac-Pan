@@ -14,37 +14,42 @@ public class NetworkUI : MonoBehaviour
     
     [SerializeField] private TMP_InputField ipInput;
     [SerializeField] private UnityTransport transport;
+    
+    [SerializeField] private GameObject feedbackPanel;
 
 
-    public void Awake()
+    private void Awake()
     {
         serverButton.onClick.AddListener(delegate
         {
-            if (NetworkCheck()) return;
+            if (NetworkManager.Singleton.IsListening) return;
             NetworkManager.Singleton.StartServer();
             NetworkManager.Singleton.SceneManager.LoadScene("Game", LoadSceneMode.Single);
         });
         hostButton.onClick.AddListener(delegate
         {
-            if (NetworkCheck()) return;
+            if (NetworkManager.Singleton.IsListening) return;
+            transport.ConnectionData.Address = "127.0.0.1";
             NetworkManager.Singleton.StartHost();
             NetworkManager.Singleton.SceneManager.LoadScene("Game", LoadSceneMode.Single);
         });
         clientButton.onClick.AddListener(delegate
         {
-            if (NetworkCheck()) return;
+            if (ipInput.text != "")
+                if (!CheckIP())
+                    return;
+            if (NetworkManager.Singleton.IsListening) return;
             NetworkManager.Singleton.StartClient();
+            feedbackPanel.SetActive(true);
+        });
+        
+        feedbackPanel.GetComponent<Button>().onClick.AddListener(delegate
+        {
+            NetworkManager.Singleton.Shutdown();
+            feedbackPanel.SetActive(false);
         });
     }
 
-    private bool NetworkCheck()
-    {
-        if (transport.ConnectionData.Address == "127.0.0.1")
-            if (!CheckIP())
-                return true;
-        if (NetworkManager.Singleton.IsListening) return true;
-        return false;
-    }
 
     private bool CheckIP()
     {
@@ -57,6 +62,6 @@ public class NetworkUI : MonoBehaviour
         Debug.LogError("Invalid IP");
         return false;
     }
-    
-    
+
+
 }

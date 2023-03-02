@@ -1,6 +1,4 @@
-using System;
 using Unity.Netcode;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -14,14 +12,11 @@ public class Movement : NetworkBehaviour
     public Rigidbody2D Rb { get; private set; }
     public Vector2 Direction { get; private set; }
     public Vector2 NextDirection { get; private set; }
-    public Vector3 StartingPosition { get; private set; }
+    public Vector3 StartingPosition;
     
-    private NetworkObject networkObject;
-
     private void Awake()
     {
         Rb = GetComponent<Rigidbody2D>();
-        networkObject = GetComponent<NetworkObject>();
         StartingPosition = transform.position;
     }
 
