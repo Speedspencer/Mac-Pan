@@ -9145,3 +9145,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e374fa7b91a21b44aa3e9afa3d99a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pacman: {fileID: 0}
+  pellets: {fileID: 0}
