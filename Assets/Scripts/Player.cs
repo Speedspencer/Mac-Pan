@@ -53,4 +53,11 @@ public class Player : NetworkBehaviour
         Movement.SetDirection(direction);
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
+
+    public void ResetState()
+    {
+        this.Movement.ResetState();
+        this.gameObject.SetActive(true);
+        
+    }
 }

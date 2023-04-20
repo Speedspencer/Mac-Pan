@@ -1,16 +1,23 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject pacman;
+    public Player pacman;
+
+    public Ghost[] ghost;
 
     public Transform pellets;
-    
+
+
+    public int ghostMultiplier { get; private set; } = 1;
     
     public int score { get; private set; }
     
     public int lives { get; private set; }
+    
+    public int ghostLives { get; private set; }
 
 
     private void Start()
@@ -18,10 +25,19 @@ public class GameManager : MonoBehaviour
         NewGame();
     }
 
+    private void Update()
+    {
+        if (this.lives <= 0 && Input.anyKeyDown)
+        {
+            NewGame();
+        }
+    }
+
     private void NewGame()
     {
         SetScore(0);
         SetLives(3);
+        SetGhostLives(3);
         NewRound();
     }
 
@@ -37,7 +53,8 @@ public class GameManager : MonoBehaviour
 
     private void ResetState()
     {
-        this.pacman.gameObject.SetActive(true);
+        ResetGhostMultiplier();
+        this.pacman.ResetState();
 
     }
 
@@ -56,14 +73,70 @@ public class GameManager : MonoBehaviour
         this.lives = lives;
     }
 
-
-    public void GhostEaten()
+    private void SetGhostLives(int ghostLives)
     {
-        SetScore(this.score + 200);
+        this.ghostLives = ghostLives;
+    }
+
+
+    public void GhostEaten(Ghost ghost)
+    {
+        int points = ghost.points * this.ghostMultiplier;
+        SetScore(this.score + points );
+        this.ghostMultiplier++;
     }
 
     public void PacmanEaten()
     {
-        
+        this.pacman.gameObject.SetActive(false);
+        SetLives(this.lives - 1);
+
+        if (this.lives > 0)
+        {
+            Invoke(nameof(ResetState), 3.0f);
+        }
+        else
+        {
+            GameOver();
+        }
     }
+
+    public void PelletEaten(Pellet pellet)
+    {
+        pellet.gameObject.SetActive(false);
+        SetScore(this.score + pellet.point);
+
+        if (!HasRemainingPellets())
+        {
+            this.pacman.gameObject.SetActive(false);
+            Invoke(nameof(NewRound), 3.0f);
+        }
+    }
+
+    public void PowerPelletEaten(PowerPellet pellet)
+    {
+        PelletEaten(pellet);
+        CancelInvoke();
+        Invoke(nameof(ResetGhostMultiplier), pellet.duration);
+    }
+
+    private bool HasRemainingPellets()
+    {
+        foreach (Transform pellet in this.pellets)
+        {
+            if (pellet.gameObject.activeSelf)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void ResetGhostMultiplier()
+    {
+        this.ghostMultiplier = 1;
+    }
+
+
+
 }
