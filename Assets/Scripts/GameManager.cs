@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public Player pacman;
 
-    public Ghost[] ghost;
+    public Ghost ghost;
 
     public Transform pellets;
 
@@ -129,7 +129,9 @@ public class GameManager : MonoBehaviour
 
     public void GhostEatPowerPellet(PowerPellet ghostPellet)
     {
-        ghostPellet.gameObject.SetActive(false);
+        PelletEaten(ghostPellet);
+        SetScore(this.score + ghostPellet.point);
+  
     }
 
     private bool HasRemainingPellets()

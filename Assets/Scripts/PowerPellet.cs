@@ -15,7 +15,6 @@ public class PowerPellet : Pellet
     protected override void GhostEat()
     {
         FindObjectOfType<GameManager>().GhostEatPowerPellet(this);
-        this.gameObject.SetActive(false);
     }
 
    

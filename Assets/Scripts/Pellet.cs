@@ -16,6 +16,8 @@ public class Pellet : MonoBehaviour
     protected virtual void GhostEat()
     {
         FindObjectOfType<GameManager>().PelletEaten(this);
+        this.gameObject.SetActive(false);
+
     }
 
 
@@ -26,11 +28,10 @@ public class Pellet : MonoBehaviour
             Eat();
         }
         
-        if (col.gameObject.layer == LayerMask.NameToLayer("Ghost"))
+        else if (col.gameObject.layer == LayerMask.NameToLayer("Ghost"))
         {
             Debug.Log("fffffffff");
             GhostEat();
-            
         }
     }
 }
