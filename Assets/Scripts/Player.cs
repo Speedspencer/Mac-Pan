@@ -56,7 +56,7 @@ public class Player : NetworkBehaviour
 
     public void ResetState()
     {
-        this.Movement.ResetState();
+       // this.Movement.ResetState();
         this.gameObject.SetActive(true);
         
     }

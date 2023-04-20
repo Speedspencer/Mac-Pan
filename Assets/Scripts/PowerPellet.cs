@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,4 +11,13 @@ public class PowerPellet : Pellet
     {
         FindObjectOfType<GameManager>().PowerPelletEaten(this);
     }
+    
+    protected override void GhostEat()
+    {
+        FindObjectOfType<GameManager>().GhostEatPowerPellet(this);
+        this.gameObject.SetActive(false);
+    }
+
+   
+    
 }

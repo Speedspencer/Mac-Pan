@@ -42,5 +42,7 @@ public class Ghost : MonoBehaviour
                 FindObjectOfType<GameManager>().PacmanEaten();
             }
         }
+   
     }
+  
 }

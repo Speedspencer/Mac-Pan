@@ -10,9 +10,13 @@ public class GameManager : MonoBehaviour
 
     public Transform pellets;
 
+    public Text scoreText;
+
+    public Text livesText;
+
 
     public int ghostMultiplier { get; private set; } = 1;
-    
+
     public int score { get; private set; }
     
     public int lives { get; private set; }
@@ -31,11 +35,14 @@ public class GameManager : MonoBehaviour
         {
             NewGame();
         }
+
+        scoreText.text = "Remaining Dot : " + score + " Left";
+        livesText.text = "Lives : " + lives + " Left";
     }
 
     private void NewGame()
     {
-        SetScore(0);
+        SetScore(294);
         SetLives(3);
         SetGhostLives(3);
         NewRound();
@@ -104,7 +111,7 @@ public class GameManager : MonoBehaviour
     public void PelletEaten(Pellet pellet)
     {
         pellet.gameObject.SetActive(false);
-        SetScore(this.score + pellet.point);
+        SetScore(this.score - pellet.point);
 
         if (!HasRemainingPellets())
         {
@@ -118,6 +125,11 @@ public class GameManager : MonoBehaviour
         PelletEaten(pellet);
         CancelInvoke();
         Invoke(nameof(ResetGhostMultiplier), pellet.duration);
+    }
+
+    public void GhostEatPowerPellet(PowerPellet ghostPellet)
+    {
+        ghostPellet.gameObject.SetActive(false);
     }
 
     private bool HasRemainingPellets()
@@ -136,7 +148,8 @@ public class GameManager : MonoBehaviour
     {
         this.ghostMultiplier = 1;
     }
+    
+    
 
-
-
+   
 }

@@ -5,19 +5,32 @@ using UnityEngine;
 
 public class Pellet : MonoBehaviour
 {
-    public int point = 10;
+    public int point = 1;
 
     protected virtual void Eat()
     {
         FindObjectOfType<GameManager>().PelletEaten(this);
         this.gameObject.SetActive(false);
     }
+    
+    protected virtual void GhostEat()
+    {
+        FindObjectOfType<GameManager>().PelletEaten(this);
+    }
+
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("PacMan"))
         {
             Eat();
+        }
+        
+        if (col.gameObject.layer == LayerMask.NameToLayer("Ghost"))
+        {
+            Debug.Log("fffffffff");
+            GhostEat();
+            
         }
     }
 }
