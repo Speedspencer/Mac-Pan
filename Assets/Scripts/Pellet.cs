@@ -7,6 +7,10 @@ public class Pellet : MonoBehaviour
 {
     public int point = 1;
 
+    
+    private bool isInsideTrigger = false;
+    private float timeInsideTrigger = 0f;
+    public float timeThreshold = 2f; // 2 seconds
     protected virtual void Eat()
     {
         FindObjectOfType<GameManager>().PelletEaten(this);
@@ -15,9 +19,7 @@ public class Pellet : MonoBehaviour
     
     protected virtual void GhostEat()
     {
-        FindObjectOfType<GameManager>().PelletEaten(this);
-        this.gameObject.SetActive(false);
-
+        
     }
 
 
@@ -25,13 +27,37 @@ public class Pellet : MonoBehaviour
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("PacMan"))
         {
+            Debug.Log("Eat");
             Eat();
         }
-        
-        else if (col.gameObject.layer == LayerMask.NameToLayer("Ghost"))
+
+        /*if (col.gameObject.layer == LayerMask.NameToLayer("Ghost"))
         {
-            Debug.Log("fffffffff");
+            Debug.Log("ghost");
             GhostEat();
+        }*/
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ghost"))
+        {
+            isInsideTrigger = true;
+            timeInsideTrigger += Time.deltaTime;
+
+            if (timeInsideTrigger >= timeThreshold)
+            {
+                Debug.Log("Object has been inside the trigger for " + timeThreshold + " seconds!");
+                GhostEat();
+            }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ghost"))
+        {
+            isInsideTrigger = false;
+            timeInsideTrigger = 0f;
         }
     }
 }

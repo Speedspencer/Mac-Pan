@@ -129,8 +129,7 @@ public class GameManager : MonoBehaviour
 
     public void GhostEatPowerPellet(PowerPellet ghostPellet)
     {
-        PelletEaten(ghostPellet);
-        SetScore(this.score + ghostPellet.point);
+        ghostPellet.gameObject.SetActive(false);
   
     }
 
