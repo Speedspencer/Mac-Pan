@@ -125,4 +125,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: 10
+  timeThreshold: 2
   duration: 8

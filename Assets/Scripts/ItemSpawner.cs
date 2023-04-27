@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class ItemSpawner : MonoBehaviour
 {
-    public GameObject itemPrefab;
+    /*public GameObject itemPrefab;
     public Tilemap tilemap;
     public Tilemap wallTile;
 
@@ -38,5 +38,29 @@ public class ItemSpawner : MonoBehaviour
 
         // Instantiate the item at the chosen position
         Instantiate(itemPrefab, tilemap.CellToWorld(randomPosition), Quaternion.identity);
+    }*/
+    
+    public GameObject itemPrefab;
+    public Transform[] spawnPointTransforms;
+    private Vector3[] spawnPoints;
+
+    private void Start()
+    {
+        SpawnItem();
+        // Convert the Transform positions to Vector3 positions
+        spawnPoints = new Vector3[spawnPointTransforms.Length];
+        for (int i = 0; i < spawnPointTransforms.Length; i++)
+        {
+            spawnPoints[i] = spawnPointTransforms[i].position;
+        }
+    }
+
+    public void SpawnItem()
+    {
+        // Choose a random spawn point from the array
+        Vector3 randomPosition = spawnPoints[Random.Range(0, spawnPoints.Length)];
+
+        // Instantiate the item at the chosen position
+        Instantiate(itemPrefab, randomPosition, Quaternion.identity);
     }
 }
