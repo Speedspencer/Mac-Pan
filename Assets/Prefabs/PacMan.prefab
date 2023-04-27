@@ -226,9 +226,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 291cd1ad51b282a4791ec8e4a867154e, type: 3}
-  - {fileID: 21300000, guid: 47d4fc5b0d0fb554686b9bc5515d20b0, type: 3}
-  - {fileID: 21300000, guid: 291cd1ad51b282a4791ec8e4a867154e, type: 3}
-  - {fileID: 21300000, guid: c8aafc6dc8ad67b4fa076e790679b96d, type: 3}
+  - {fileID: 21300000, guid: bcb86fa3a7029294e87057103f6b5e74, type: 3}
   animationTime: 0.125
   loop: 1
