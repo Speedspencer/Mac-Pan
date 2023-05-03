@@ -25,9 +25,7 @@ public class PlayerController : MonoBehaviour
    private void Start()
    {
       view = GetComponent<PhotonView>();
-      /*
-      playerText.text = PhotonNetwork.NickName;
-      */
+  
 
       if (view.IsMine)
       {
@@ -36,8 +34,9 @@ public class PlayerController : MonoBehaviour
       }
       else
       {
+         PlayerCamera.SetActive(false);
          playerText.text = view.Owner.NickName;
-         playerText.color = Color.red;
+         playerText.color = Color.green;
       }
    }
 
@@ -64,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
       if (Input.GetKeyDown(KeyCode.A))
       {
+         
          sr.flipX = false;
       } 
       if (Input.GetKeyDown(KeyCode.D))
@@ -71,4 +71,19 @@ public class PlayerController : MonoBehaviour
          sr.flipX = true;
       }
    }
+
+   [PunRPC]
+   private void FlipTrue()
+   {
+      sr.flipX = true;
+
+   }
+   
+   [PunRPC]
+   private void FlipFalse()
+   {
+      sr.flipX = false;
+
+   }
+   
 }
