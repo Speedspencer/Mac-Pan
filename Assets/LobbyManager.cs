@@ -19,6 +19,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public float timeBetweenUpdates = 1.5f;
     private float nextUpdateTime;
+    
+   
     private void Start()
     {
         PhotonNetwork.JoinLobby();
