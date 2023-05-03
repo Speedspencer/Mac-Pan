@@ -14,6 +14,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     public Color highlightColor;
     public GameObject leftArrowButton;
     public GameObject rightArrowButton;
+    public Image bg;
 
     private ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
 
@@ -84,6 +85,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     {
         if (player.CustomProperties.ContainsKey("playerAvatar"))
         {
+            bg.gameObject.SetActive(false);
             playerAvatar.sprite = avatars[(int) player.CustomProperties["playerAvatar"]];
             playerProperties["playerAvatar"] = (int) player.CustomProperties["playerAvatar"];
         }
