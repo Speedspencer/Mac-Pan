@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public Player pacman;
+    public PlayerControl pacman;
 
     public Ghost ghost;
 
