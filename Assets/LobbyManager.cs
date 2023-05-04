@@ -28,14 +28,14 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        PhotonNetwork.JoinLobby();
+        PhotonNetwork.JoinLobby(TypedLobby.Default);
     }
 
     public void OnClickCreate()
     {
         if (roomInputField.text.Length >= 1)
         {
-            PhotonNetwork.CreateRoom(roomInputField.text, new RoomOptions() {MaxPlayers = 2, BroadcastPropsChangeToAll = true});
+            PhotonNetwork.CreateRoom(roomInputField.text, new RoomOptions() {MaxPlayers = 3, BroadcastPropsChangeToAll = true});
         }
     }
 

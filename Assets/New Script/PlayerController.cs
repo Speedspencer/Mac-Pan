@@ -12,21 +12,18 @@ public class PlayerController : MonoBehaviour
    public Rigidbody2D rb;
    public GameObject PlayerCamera;
    public float speed;
-   private PhotonView view;
+   public PhotonView view;
 
    public Text playerText;
 
    public SpriteRenderer sr;
+
+   public GameObject bullet;
+   public Transform firePos;
    
    private void Awake()
    {
-   }
-
-   private void Start()
-   {
-      view = GetComponent<PhotonView>();
-  
-
+      
       if (view.IsMine)
       {
          PlayerCamera.SetActive(true);
@@ -37,6 +34,7 @@ public class PlayerController : MonoBehaviour
          PlayerCamera.SetActive(false);
          playerText.text = view.Owner.NickName;
          playerText.color = Color.green;
+         
       }
    }
 
@@ -47,13 +45,6 @@ public class PlayerController : MonoBehaviour
          CheckInput();
       }
       
-      /*if (view.IsMine)
-      {
-         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
-
-         transform.position += input.normalized * speed * Time.deltaTime;
-      }*/
-    
    }
 
    private void CheckInput()
@@ -61,15 +52,43 @@ public class PlayerController : MonoBehaviour
       var move = new Vector3(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"), 0);
       transform.position += move * speed * Time.deltaTime;
 
+      if (Input.GetKeyDown(KeyCode.Space))
+      {
+         Shoot();
+      }
+
       if (Input.GetKeyDown(KeyCode.A))
       {
+         view.RPC("FlipFalse", RpcTarget.AllBuffered);
          
-         sr.flipX = false;
       } 
       if (Input.GetKeyDown(KeyCode.D))
       {
-         sr.flipX = true;
+         view.RPC("FlipTrue", RpcTarget.AllBuffered);
       }
+      
+    
+   }
+
+   private void Shoot()
+   {
+      
+      if (sr.flipX == false)
+      {
+    
+         GameObject obj = PhotonNetwork.Instantiate(bullet.name,
+            new Vector2(firePos.transform.position.x, firePos.transform.position.y), Quaternion.identity, 0);
+      }
+      
+      if (sr.flipX == true)
+      {
+         GameObject obj = PhotonNetwork.Instantiate(bullet.name,
+            new Vector2(firePos.transform.position.x, firePos.transform.position.y), Quaternion.identity, 0);
+         
+         obj.GetComponent<PhotonView>().RPC("ChangeDir_Left", RpcTarget.AllBuffered);
+      }
+      
+      
    }
 
    [PunRPC]

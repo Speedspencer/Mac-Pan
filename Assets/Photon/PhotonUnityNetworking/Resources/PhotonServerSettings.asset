@@ -41,6 +41,12 @@ MonoBehaviour:
   - RespawnSpaceship
   - FlipFalse
   - FlipTrue
+  - ChangeDir_Left
+  - DestroyObject
+  - FlipYFalse
+  - FlipYTrue
+  - ChangeDir_Up
+  - ReduceHealth
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
