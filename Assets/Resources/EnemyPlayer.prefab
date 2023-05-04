@@ -233,9 +233,9 @@ GameObject:
   - component: {fileID: -2713868770790475794}
   - component: {fileID: -7456830059609596047}
   - component: {fileID: 588380596206865545}
-  - component: {fileID: 5550391406404741156}
   - component: {fileID: -2034253639356528546}
   - component: {fileID: 6986633212482149697}
+  - component: {fileID: 8736058680197844234}
   m_Layer: 0
   m_Name: EnemyPlayer
   m_TagString: Player
@@ -372,22 +372,7 @@ MonoBehaviour:
   sr: {fileID: 3870641785052417476}
   bullet: {fileID: 7160891171458236031, guid: 430c9588ccd12ef42a6bd265fe266e78, type: 3}
   firePos: {fileID: 5165778586234895364}
---- !u!58 &5550391406404741156
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2032362714072391342}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 6
+  disableInput: 0
 --- !u!50 &-2034253639356528546
 Rigidbody2D:
   serializedVersion: 4
@@ -421,7 +406,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7983abb175ca720409dfc2545cbfbb49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthAmount: 10
   fillImage: {fileID: 2133827497521127589}
+  plMove: {fileID: 588380596206865545}
+  rb: {fileID: -2034253639356528546}
+  bc: {fileID: 8736058680197844234}
+  sr: {fileID: 3870641785052417476}
+  playerCanvas: {fileID: 738618623494716618}
+--- !u!61 &8736058680197844234
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032362714072391342}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.4, y: -3.22}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 20.48, y: 20.48}
+    newSize: {x: 20.48, y: 20.48}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 11.6, y: 10.2}
+  m_EdgeRadius: 0
 --- !u!1 &2215429828048520062
 GameObject:
   m_ObjectHideFlags: 0

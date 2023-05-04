@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviourPun
 
    public GameObject bullet;
    public Transform firePos;
+
+   public bool disableInput = false;
    
    private void Awake()
    {
@@ -39,7 +41,7 @@ public class PlayerController : MonoBehaviourPun
 
    private void Update()
    {
-      if (view.IsMine)
+      if (view.IsMine && !disableInput)
       {
          CheckInput();
       }

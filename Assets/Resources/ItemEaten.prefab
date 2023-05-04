@@ -497,9 +497,9 @@ GameObject:
   - component: {fileID: -4985527670073444456}
   - component: {fileID: 8435834537591129893}
   - component: {fileID: -4976109548267693035}
-  - component: {fileID: 5420765755257562303}
   - component: {fileID: -3972308825439527734}
   - component: {fileID: 889805103973996037}
+  - component: {fileID: -7209704577769181480}
   m_Layer: 0
   m_Name: ItemEaten
   m_TagString: Player
@@ -636,22 +636,7 @@ MonoBehaviour:
   sr: {fileID: 9013122774571613961}
   bullet: {fileID: 7160891171458236031, guid: 430c9588ccd12ef42a6bd265fe266e78, type: 3}
   firePos: {fileID: 4951310335748902165}
---- !u!58 &5420765755257562303
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9013122774571613966}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 6
+  disableInput: 0
 --- !u!50 &-3972308825439527734
 Rigidbody2D:
   serializedVersion: 4
@@ -685,4 +670,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7983abb175ca720409dfc2545cbfbb49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthAmount: 10
   fillImage: {fileID: 8104765426076438423}
+  plMove: {fileID: -4976109548267693035}
+  rb: {fileID: -3972308825439527734}
+  bc: {fileID: -7209704577769181480}
+  sr: {fileID: 9013122774571613961}
+  playerCanvas: {fileID: 3931159517756845644}
+--- !u!61 &-7209704577769181480
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9013122774571613966}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.39, y: -2.32}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 20.48, y: 20.48}
+    newSize: {x: 20.48, y: 20.48}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 10.35, y: 11.04}
+  m_EdgeRadius: 0
