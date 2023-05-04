@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviourPun
    public float speed;
    public PhotonView view;
 
+
    public Text playerText;
 
    public SpriteRenderer sr;
@@ -42,7 +43,6 @@ public class PlayerController : MonoBehaviourPun
 
    }
    
-
    private void Update()
    {
       if (view.IsMine && !disableInput)
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviourPun
       {
          view.RPC("FlipFalse", RpcTarget.AllBuffered);
       }
-      
+
    }
 
    private void Shoot()
@@ -95,17 +95,16 @@ public class PlayerController : MonoBehaviourPun
 
    }
    [PunRPC]
-   private void FlipTrue()
-   {
-      sr.flipX = true;
-
-   }
-   
-   [PunRPC]
-   private void FlipFalse()
-   {
-      sr.flipX = false;
-
-   }
-   
+       private void FlipTrue()
+       {
+          sr.flipX = true;
+    
+       }
+       
+       [PunRPC]
+       private void FlipFalse()
+       {
+          sr.flipX = false;
+    
+       }
 }

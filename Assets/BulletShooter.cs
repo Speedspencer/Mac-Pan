@@ -10,6 +10,9 @@ public class BulletShooter : MonoBehaviourPun
     public float moveSpeed;
     public float destroyTime;
 
+    public bool moveUp = false;
+    public bool moveDown = false;
+
     public PhotonView photonView;
 
     public float bulletDamage;
@@ -30,6 +33,18 @@ public class BulletShooter : MonoBehaviourPun
     public void ChangeDir_Left()
     {
         moveDir = true;
+    }
+    
+    [PunRPC]
+    public void ChangeDir_Up()
+    {
+        moveUp = true;
+    }
+    
+    [PunRPC]
+    public void ChangeDir_Down()
+    {
+        moveDown = true;
     }
  
     [PunRPC]
