@@ -27,7 +27,7 @@ namespace Photon.Pun
             {
                 if (!disableSend && ChatInputField.isFocused)
                 {
-                    if (ChatInputField.text != "" && ChatInputField.text.Length > 0 && Input.GetKeyDown(KeyCode.T))
+                    if (ChatInputField.text != "" && ChatInputField.text.Length > 0 && Input.GetKeyDown(KeyCode.Slash))
                     {
                         photonView.RPC("SendMessage", RpcTarget.AllBuffered, ChatInputField.text);
                         bubbleSpeechObject.SetActive(true);
