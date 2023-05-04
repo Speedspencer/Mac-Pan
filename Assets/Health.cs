@@ -3,16 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
-    
-public class Health : MonoBehaviour
+using Photon.Realtime;
+public class Health : MonoBehaviourPun
 {
     public Image fillImage;
-    private PhotonView photonView;
-    
-    private void Awake()
-    {
-        photonView = GetComponent<PhotonView>();
-    }
     
     [PunRPC]
     public void ReduceHealth(float amount)

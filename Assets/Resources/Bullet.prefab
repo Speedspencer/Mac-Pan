@@ -130,7 +130,7 @@ MonoBehaviour:
   moveSpeed: 10
   destroyTime: 2.5
   photonView: {fileID: 1403148484972795624}
-  bulletDamage: 0.3
+  bulletDamage: 0.1
 --- !u!114 &1403148484972795624
 MonoBehaviour:
   m_ObjectHideFlags: 0

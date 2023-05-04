@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class BulletShooter : MonoBehaviour
+public class BulletShooter : MonoBehaviourPun
 {
     public bool moveDir = false;
     public float moveSpeed;
@@ -51,7 +51,6 @@ public class BulletShooter : MonoBehaviour
             transform.Translate(Vector2.right * moveSpeed* Time.deltaTime);
 
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -60,10 +59,8 @@ public class BulletShooter : MonoBehaviour
         {
             return;
         }
-
         PhotonView target = col.gameObject.GetComponent<PhotonView>();
 
-        //if (target != null && (!target.IsMine || target.IsSceneView))
         if (target != null && (!target.IsMine || target.IsRoomView))
         {
             if (target.tag == "Player")

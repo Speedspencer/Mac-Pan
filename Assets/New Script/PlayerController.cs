@@ -6,7 +6,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviourPun
 {
 
    public Rigidbody2D rb;
@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
       }
       else
       {
-         PlayerCamera.SetActive(false);
          playerText.text = view.Owner.NickName;
          playerText.color = Color.green;
          
@@ -67,7 +66,6 @@ public class PlayerController : MonoBehaviour
          view.RPC("FlipTrue", RpcTarget.AllBuffered);
       }
       
-    
    }
 
    private void Shoot()
@@ -87,10 +85,8 @@ public class PlayerController : MonoBehaviour
          
          obj.GetComponent<PhotonView>().RPC("ChangeDir_Left", RpcTarget.AllBuffered);
       }
-      
-      
-   }
 
+   }
    [PunRPC]
    private void FlipTrue()
    {
