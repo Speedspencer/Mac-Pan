@@ -179,10 +179,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.25943398, g: 0.8705304, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.8117648, g: 0.7803922, b: 0.654902, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.16470589, g: 0.14117648, b: 0.10980393, a: 1}
+    m_PressedColor: {r: 0.15294118, g: 0.13333334, b: 0.10196079, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.63498974, b: 1, a: 1}
+  m_Color: {r: 0.19873622, g: 0.20433378, b: 0.20754719, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -436,7 +436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.46274513, b: 0.5686275, a: 1}
+  m_Color: {r: 0.16862746, g: 0.14509805, b: 0.1137255, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -632,10 +632,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.25943398, g: 0.8705304, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.8117648, g: 0.7803922, b: 0.654902, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 1, g: 0.9615903, b: 0.9103774, a: 1}
+    m_HighlightedColor: {r: 0.16862746, g: 0.14509805, b: 0.1137255, a: 1}
+    m_PressedColor: {r: 0.15686275, g: 0.13725491, b: 0.10588236, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -901,9 +901,9 @@ MonoBehaviour:
   bg: {fileID: 3941798044699858030}
   playerAvatar: {fileID: 4319026721978028872}
   avatars:
-  - {fileID: 21300000, guid: c70ab0a1e6bba1f4497f4460467f7b78, type: 3}
-  - {fileID: 21300000, guid: 5c95a2655d54b9b42947e00c90c0c39a, type: 3}
-  - {fileID: 21300000, guid: bcb86fa3a7029294e87057103f6b5e74, type: 3}
+  - {fileID: 21300000, guid: 9173bf90997a892439807eddc471eb53, type: 3}
+  - {fileID: 21300000, guid: 99d623b85a873384bad62bbb08443f9f, type: 3}
+  - {fileID: 21300000, guid: 67ca9f76daa3dc749b79084bf68a761d, type: 3}
 --- !u!1 &8233418580431865329
 GameObject:
   m_ObjectHideFlags: 0

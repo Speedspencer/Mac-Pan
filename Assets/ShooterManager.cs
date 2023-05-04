@@ -9,6 +9,8 @@ using Random = UnityEngine.Random;
 
 public class ShooterManager : MonoBehaviour
 {
+    public SoundController sound;
+
     public static ShooterManager instance;
     public Text pingText;
 
@@ -67,7 +69,8 @@ public class ShooterManager : MonoBehaviour
         int randomValue = Random.Range(0,spawnPoints.Length);
         Transform spawnPoint = spawnPoints[randomValue];
         localPlayer.transform.localPosition = new Vector2(spawnPoint.position.x,spawnPoint.position.y);
-
+        sound.OnRecoverPlay();
+        
     }
 
     private void CheckInput()

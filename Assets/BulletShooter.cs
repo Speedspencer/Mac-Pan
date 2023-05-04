@@ -43,12 +43,12 @@ public class BulletShooter : MonoBehaviourPun
         if (!moveDir)
         {
           
-            transform.Translate(Vector2.left * moveSpeed* Time.deltaTime);
+            transform.Translate(Vector2.right * moveSpeed* Time.deltaTime);
         }
         else
         {
           
-            transform.Translate(Vector2.right * moveSpeed* Time.deltaTime);
+            transform.Translate(Vector2.left * moveSpeed* Time.deltaTime);
 
         }
     }

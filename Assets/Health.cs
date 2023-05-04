@@ -7,6 +7,7 @@ using Photon.Pun;
 using Photon.Realtime;
 public class Health : MonoBehaviourPun
 {
+    public SoundController sound;
     public float healthAmount;
     public Image fillImage;
 
@@ -55,6 +56,7 @@ public class Health : MonoBehaviourPun
         bc.enabled = false;
         sr.enabled = false;
         playerCanvas.SetActive(false);
+        sound.OnKnockoutPlay();
     }
     
     [PunRPC]

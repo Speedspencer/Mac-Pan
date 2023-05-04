@@ -943,6 +943,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6197121140990744752, guid: 64f20bfee5b19e2428361edcaf1539f6, type: 3}
+        m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &470956021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1777,7 +1789,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382891999}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1382892001
 Camera:
   m_ObjectHideFlags: 0

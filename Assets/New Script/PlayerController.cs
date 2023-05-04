@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using Unity.VisualScripting;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviourPun
 {
 
+   public SoundController sound;
    public Rigidbody2D rb;
    public GameObject PlayerCamera;
    public float speed;
@@ -25,7 +27,7 @@ public class PlayerController : MonoBehaviourPun
    
    private void Awake()
    {
-      
+
       if (view.IsMine)
       {
          PlayerCamera.SetActive(true);
@@ -34,10 +36,12 @@ public class PlayerController : MonoBehaviourPun
       else
       {
          playerText.text = view.Owner.NickName;
-         playerText.color = Color.green;
+         playerText.color = Color.red;
          
       }
+
    }
+   
 
    private void Update()
    {
@@ -53,19 +57,20 @@ public class PlayerController : MonoBehaviourPun
       var move = new Vector3(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"), 0);
       transform.position += move * speed * Time.deltaTime;
 
-      if (Input.GetKeyDown(KeyCode.Space))
+      if (Input.GetKeyDown(KeyCode.Mouse0))
       {
+         sound.OnShootPlay();
          Shoot();
       }
 
       if (Input.GetKeyDown(KeyCode.A))
       {
-         view.RPC("FlipFalse", RpcTarget.AllBuffered);
+         view.RPC("FlipTrue", RpcTarget.AllBuffered);
          
       } 
       if (Input.GetKeyDown(KeyCode.D))
       {
-         view.RPC("FlipTrue", RpcTarget.AllBuffered);
+         view.RPC("FlipFalse", RpcTarget.AllBuffered);
       }
       
    }

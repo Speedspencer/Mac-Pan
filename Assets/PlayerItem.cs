@@ -22,9 +22,11 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     public Sprite[] avatars;
 
     private Player player;
+    
 
     private void Start()
     {
+        bg.gameObject.SetActive(true);
         backgroundImage = GetComponent<Image>();
     }
     
