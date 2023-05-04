@@ -77,10 +77,8 @@ public class PlayerController : MonoBehaviourPun
 
    private void Shoot()
    {
-      
       if (sr.flipX == false)
       {
-    
          GameObject obj = PhotonNetwork.Instantiate(bullet.name,
             new Vector2(firePos.transform.position.x, firePos.transform.position.y), Quaternion.identity, 0);
       }
@@ -92,8 +90,8 @@ public class PlayerController : MonoBehaviourPun
          
          obj.GetComponent<PhotonView>().RPC("ChangeDir_Left", RpcTarget.AllBuffered);
       }
-
    }
+   
    [PunRPC]
        private void FlipTrue()
        {

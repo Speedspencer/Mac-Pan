@@ -1,70 +1,72 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Photon.Pun;
-using UnityEngine;
-using UnityEngine.UI;
-
-public class ChatManager : MonoBehaviour
+namespace Photon.Pun
 {
-    public PlayerController plMove;
-    public PhotonView photonView;
-    public GameObject bubbleSpeechObject;
-    public Text updatedText;
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using Photon.Pun;
+    using UnityEngine;
+    using UnityEngine.UI;
 
-    private InputField ChatInputField;
-    private bool disableSend;
-
-    private void Awake()
+    public class ChatManager : MonoBehaviourPun, IPunObservable
     {
-        ChatInputField = GameObject.Find("ChatInputField").GetComponent<InputField>();
-    }
+        public PlayerController plMove;
+        public GameObject bubbleSpeechObject;
+        public Text updatedText;
 
-    private void Update()
-    {
-        if (photonView.IsMine)
+        private InputField ChatInputField;
+        private bool disableSend;
+
+        private void Awake()
         {
-            if (!disableSend && ChatInputField.isFocused)
+            ChatInputField = GameObject.Find("ChatInputField").GetComponent<InputField>();
+        }
+
+        private void Update()
+        {
+            if (photonView.IsMine)
             {
-                if (ChatInputField.text != "" && ChatInputField.text.Length > 0 && Input.GetKeyDown(KeyCode.T))
+                if (!disableSend && ChatInputField.isFocused)
                 {
-                    photonView.RPC("SendMessage", RpcTarget.AllBuffered, ChatInputField.text);
-                    bubbleSpeechObject.SetActive(true);
+                    if (ChatInputField.text != "" && ChatInputField.text.Length > 0 && Input.GetKeyDown(KeyCode.T))
+                    {
+                        photonView.RPC("SendMessage", RpcTarget.AllBuffered, ChatInputField.text);
+                        bubbleSpeechObject.SetActive(true);
 
-                    ChatInputField.text = "";
-                    disableSend = true;
+                        ChatInputField.text = "";
+                        disableSend = true;
 
+                    }
                 }
             }
         }
-    }
 
-    [PunRPC]
-    private void SendMessage(string message)
-    {
-        updatedText.text = message;
-
-        StartCoroutine("Remove");
-    }
-
-    IEnumerator Remove()
-    {
-        yield return new WaitForSeconds(4f);
-        bubbleSpeechObject.SetActive(false);
-        disableSend = false;
-    }
-
-    private void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
+        [PunRPC]
+        private new void SendMessage(string message)
         {
-            stream.SendNext(bubbleSpeechObject.activeSelf);
+            updatedText.text = message;
+
+            StartCoroutine("Remove");
         }
-        else if (stream.IsReading)
+
+        IEnumerator Remove()
         {
-            bubbleSpeechObject.SetActive((bool)stream.ReceiveNext());
-            
+            yield return new WaitForSeconds(4f);
+            bubbleSpeechObject.SetActive(false);
+            disableSend = false;
         }
-      
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                stream.SendNext(bubbleSpeechObject.activeSelf);
+            }
+            else if (stream.IsReading)
+            {
+                bubbleSpeechObject.SetActive((bool) stream.ReceiveNext());
+
+            }
+
+        }
     }
 }

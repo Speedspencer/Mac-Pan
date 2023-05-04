@@ -128,10 +128,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDir: 0
   moveSpeed: 10
-  destroyTime: 2
+  destroyTime: 1
   moveUp: 0
   moveDown: 0
-  photonView: {fileID: 1403148484972795624}
   bulletDamage: 1
 --- !u!114 &1403148484972795624
 MonoBehaviour:

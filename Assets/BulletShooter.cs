@@ -12,9 +12,7 @@ public class BulletShooter : MonoBehaviourPun
 
     public bool moveUp = false;
     public bool moveDown = false;
-
-    public PhotonView photonView;
-
+    
     public float bulletDamage;
 
     private void Awake()
