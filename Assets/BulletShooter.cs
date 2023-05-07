@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Unity.VisualScripting;
 
 public class BulletShooter : MonoBehaviourPun
 {
@@ -10,22 +11,22 @@ public class BulletShooter : MonoBehaviourPun
     public float moveSpeed;
     public float destroyTime;
 
-    public bool moveUp = false;
-    public bool moveDown = false;
-    
+
+
     public float bulletDamage;
 
     private void Awake()
     {
         StartCoroutine("DestroyByTime");
     }
-    
+
 
     IEnumerator DestroyByTime()
     {
         yield return new WaitForSeconds(destroyTime);
         this.GetComponent<PhotonView>().RPC("DestroyObject", RpcTarget.AllBuffered);
     }
+
 
     [PunRPC]
     public void ChangeDir_Left()
@@ -34,18 +35,6 @@ public class BulletShooter : MonoBehaviourPun
     }
     
     [PunRPC]
-    public void ChangeDir_Up()
-    {
-        moveUp = true;
-    }
-    
-    [PunRPC]
-    public void ChangeDir_Down()
-    {
-        moveDown = true;
-    }
- 
-    [PunRPC]
     public void DestroyObject()
     {
         Destroy(this.gameObject);
@@ -53,17 +42,8 @@ public class BulletShooter : MonoBehaviourPun
 
     private void Update()
     {
-        if (!moveDir)
-        {
-          
-            transform.Translate(Vector2.right * moveSpeed* Time.deltaTime);
-        }
-        else
-        {
-          
-            transform.Translate(Vector2.left * moveSpeed* Time.deltaTime);
 
-        }
+        MoveDirShoot();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -83,4 +63,19 @@ public class BulletShooter : MonoBehaviourPun
             this.GetComponent<PhotonView>().RPC("DestroyObject", RpcTarget.AllBuffered);
         }
     }
+
+    public void MoveDirShoot()
+    {
+        if (!moveDir)
+        {
+            transform.Translate(Vector2.right * moveSpeed* Time.deltaTime);
+            
+        }
+        else
+        {
+            transform.Translate(Vector2.left * moveSpeed* Time.deltaTime);
+            
+        }
+    }
+
 }

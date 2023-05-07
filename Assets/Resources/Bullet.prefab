@@ -129,8 +129,6 @@ MonoBehaviour:
   moveDir: 0
   moveSpeed: 10
   destroyTime: 1
-  moveUp: 0
-  moveDown: 0
   bulletDamage: 1
 --- !u!114 &1403148484972795624
 MonoBehaviour:

@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviourPun
 
    public SpriteRenderer sr;
 
+   public bool flip;
+
    public GameObject bullet;
    public Transform firePos;
 
@@ -61,6 +63,7 @@ public class PlayerController : MonoBehaviourPun
       {
          sound.OnShootPlay();
          Shoot();
+
       }
 
       if (Input.GetKeyDown(KeyCode.A))
@@ -72,11 +75,11 @@ public class PlayerController : MonoBehaviourPun
       {
          view.RPC("FlipFalse", RpcTarget.AllBuffered);
       }
-
    }
 
    private void Shoot()
    {
+
       if (sr.flipX == false)
       {
          GameObject obj = PhotonNetwork.Instantiate(bullet.name,
@@ -90,19 +93,23 @@ public class PlayerController : MonoBehaviourPun
          
          obj.GetComponent<PhotonView>().RPC("ChangeDir_Left", RpcTarget.AllBuffered);
       }
+      
+    
    }
    
    [PunRPC]
-       private void FlipTrue()
-       {
-          sr.flipX = true;
+   private void FlipTrue()
+   {
+      sr.flipX = true;
     
-       }
+   }
        
-       [PunRPC]
-       private void FlipFalse()
-       {
-          sr.flipX = false;
+   [PunRPC]
+   private void FlipFalse()
+   {
+      sr.flipX = false;
     
-       }
+   }
+
+       
 }

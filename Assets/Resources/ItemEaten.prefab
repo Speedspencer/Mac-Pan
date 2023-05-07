@@ -941,6 +941,7 @@ MonoBehaviour:
   view: {fileID: -4985527670073444456}
   playerText: {fileID: 4828047425425594428}
   sr: {fileID: 9013122774571613961}
+  flip: 0
   bullet: {fileID: 7160891171458236031, guid: 430c9588ccd12ef42a6bd265fe266e78, type: 3}
   firePos: {fileID: 4951310335748902165}
   disableInput: 0
