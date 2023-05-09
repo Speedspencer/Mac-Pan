@@ -110,6 +110,6 @@ public class PlayerController : MonoBehaviourPun
       sr.flipX = false;
     
    }
-
-       
+   
+   
 }
